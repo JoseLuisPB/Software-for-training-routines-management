@@ -1,0 +1,41 @@
+﻿<Page x:Class="Proyecto_Final_DAM.vistaAlumno.InicioAlumno"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Proyecto_Final_DAM.vistaAlumno"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"
+      Title="InicioAlumno">
+
+    <Grid>
+        <Image Source="../imagenes/fondoAlumno.jpg" Stretch="Fill"></Image>
+        <Grid>
+            <!-- Pantalla -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <!-- Columna 1, botones-->
+                <StackPanel Grid.Column="0" Background="#DD57C7FF">
+                    <Button ToolTip="Gestionar perfil" Margin="5" Height="80" Width="80" BorderBrush="Transparent" Background="Transparent" Click="botonPerfil">
+                        <Image Source="../iconos/general/perfil.png" Stretch="Fill"></Image>
+                    </Button>
+                    <Button ToolTip="Entrenador asignado" Margin="5" Height="80" Width="80" BorderBrush="Transparent" Background="Transparent" Click="botonEntrenador">
+                        <Image Source="../iconos/general/coach.png" Stretch="Fill"></Image>
+                    </Button>
+                    <Button ToolTip="Gestionar rutinas" Margin="5" Height="80" Width="80" BorderBrush="Transparent" Background="Transparent" Click="botonGestionarRutinas">
+                        <Image Source="../iconos/general/rutinas.png" Stretch="Fill"></Image>
+                    </Button>
+                    <Button ToolTip="Asignación de rutinas" Margin="5" Height="80" Width="80" BorderBrush="Transparent" Background="Transparent" Click="botonRutinasAsignadas">
+                        <Image Source="../iconos/general/asignarRutinas.png" Stretch="Fill"></Image>
+                    </Button>
+                </StackPanel>
+                <!-- Columna 2 Frame-->
+                <Frame Name="framePrincipal" Grid.Column="1" NavigationUIVisibility="Hidden"></Frame>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

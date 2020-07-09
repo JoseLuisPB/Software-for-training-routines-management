@@ -1,0 +1,46 @@
+﻿<Page x:Class="Proyecto_Final_DAM.vistaEntrenador.asignar.InicioAsignarRutinas"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Proyecto_Final_DAM.vistaEntrenador.asignar"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"
+      Title="InicioAsignarRutinas">
+
+    <Grid Background="#DDF1EEEE">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListView Name="listaAlumnosAsignados" Grid.Row="0" Margin="20,10,20,30" BorderBrush="Black" BorderThickness="2" Background="#CCFFFFFF" FontSize="16" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" SelectionChanged="seleccionActividadAsignada">
+            <ListView.View>
+                <GridView>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style>
+                            <Setter Property="TextElement.FontSize" Value="20" />
+                            <Setter Property="TextElement.FontStyle" Value="Italic" />
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Header="Dni" DisplayMemberBinding="{Binding Dni}" Width="Auto"></GridViewColumn>
+                    <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding NombreCompleto}" Width="Auto"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal" >
+            <Button ToolTip="Añadir rutinas"   FontSize="15" Margin="10" FontWeight="Bold" Height="70" Width="70" Background="Transparent" BorderBrush="Transparent" Click="botonAsignarRutinas">
+                <Image Source="../../iconos/general/anyadirRutina.png" Stretch="Fill"></Image>
+            </Button>
+            <Button ToolTip="Eliminar rutinas"   FontSize="15" Margin="10" FontWeight="Bold" Height="70" Width="70" Background="Transparent" BorderBrush="Transparent" Click="botonEliminarRutinasAsignadas">
+                <Image Source="../../iconos/general/eliminarRutina.png" Stretch="Fill"></Image>
+            </Button>
+            <Button ToolTip="Comprobar rutinas"   FontSize="15" Margin="10" FontWeight="Bold" Height="70" Width="70" Background="Transparent" BorderBrush="Transparent" Click="botonGestionarRutinasAsignadas">
+                <Image Source="../../iconos/general/verRutinas.png" Stretch="Fill"></Image>
+            </Button>
+            <Button ToolTip="Ver estadísticas alumno"   FontSize="15" Margin="10" FontWeight="Bold" Height="70" Width="70" Background="Transparent" BorderBrush="Transparent" Click="botonEstadisticas">
+                <Image Source="../../iconos/general/estadisticas.png" Stretch="Fill"></Image>
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</Page>

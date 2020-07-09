@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{146AD9CC-64E7-478F-882E-8269B2B4E06B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Proyecto_Final_DAM</RootNamespace>
+    <AssemblyName>Proyecto_Final_DAM</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>iconoApp.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Json.Net, Version=1.0.18.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Json.Net.1.0.18\lib\netstandard2.0\Json.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="RestSharp, Version=106.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.10.1\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="CambiarPassword.xaml.cs">
+      <DependentUpon>CambiarPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="controlador\ActividadController.cs" />
+    <Compile Include="controlador\AlumnoController.cs" />
+    <Compile Include="controlador\ContenerController.cs" />
+    <Compile Include="controlador\EntrenadorController.cs" />
+    <Compile Include="controlador\ExtraController.cs" />
+    <Compile Include="controlador\RealizarController.cs" />
+    <Compile Include="controlador\RolController.cs" />
+    <Compile Include="controlador\RutinaController.cs" />
+    <Compile Include="controlador\TenerController.cs" />
+    <Compile Include="controlador\UsuarioController.cs" />
+    <Compile Include="InicioUsuario.xaml.cs">
+      <DependentUpon>InicioUsuario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mensajes.cs" />
+    <Compile Include="modelo\Actividad.cs" />
+    <Compile Include="modelo\Alumno.cs" />
+    <Compile Include="modelo\Contener.cs" />
+    <Compile Include="modelo\Entrenador.cs" />
+    <Compile Include="modelo\Realizar.cs" />
+    <Compile Include="modelo\Rol.cs" />
+    <Compile Include="modelo\Rutina.cs" />
+    <Compile Include="modelo\Tener.cs" />
+    <Compile Include="modelo\Usuario.cs" />
+    <Compile Include="Sesion.cs" />
+    <Compile Include="Validaciones.cs" />
+    <Compile Include="vistaAdmin\GestionarUsuario.xaml.cs">
+      <DependentUpon>GestionarUsuario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaAdmin\InicioAdmin.xaml.cs">
+      <DependentUpon>InicioAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaAdmin\ListaUsuarios.xaml.cs">
+      <DependentUpon>ListaUsuarios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaAlumno\CambiarEntrenador.xaml.cs">
+      <DependentUpon>CambiarEntrenador.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaAlumno\DatosEntrenador.xaml.cs">
+      <DependentUpon>DatosEntrenador.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaAlumno\EstadisticasAlumno.xaml.cs">
+      <DependentUpon>EstadisticasAlumno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaAlumno\GestionarPerfilAlumno.xaml.cs">
+      <DependentUpon>GestionarPerfilAlumno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaAlumno\gestionRutinas\EjecucionRutinas.xaml.cs">
+      <DependentUpon>EjecucionRutinas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaAlumno\gestionRutinas\InicioGestionRutinas.xaml.cs">
+      <DependentUpon>InicioGestionRutinas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaAlumno\InicioAlumno.xaml.cs">
+      <DependentUpon>InicioAlumno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaEntrenador\actividades\GestionActividades.xaml.cs">
+      <DependentUpon>GestionActividades.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaEntrenador\actividades\InicioActividades.xaml.cs">
+      <DependentUpon>InicioActividades.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaEntrenador\actividades\ListaActividades.xaml.cs">
+      <DependentUpon>ListaActividades.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaEntrenador\asignar\AsignarRutinas.xaml.cs">
+      <DependentUpon>AsignarRutinas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaEntrenador\asignar\DetalleRutinas.xaml.cs">
+      <DependentUpon>DetalleRutinas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaEntrenador\asignar\EliminarAsignaciones.xaml.cs">
+      <DependentUpon>EliminarAsignaciones.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaEntrenador\asignar\InicioAsignarRutinas.xaml.cs">
+      <DependentUpon>InicioAsignarRutinas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaEntrenador\asignar\MostrarAsignaciones.xaml.cs">
+      <DependentUpon>MostrarAsignaciones.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaEntrenador\GestionarPerfil.xaml.cs">
+      <DependentUpon>GestionarPerfil.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaEntrenador\InicioEntrenador.xaml.cs">
+      <DependentUpon>InicioEntrenador.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaEntrenador\rutinas\GestionRutinas.xaml.cs">
+      <DependentUpon>GestionRutinas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaEntrenador\rutinas\InicioRutinas.xaml.cs">
+      <DependentUpon>InicioRutinas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vistaEntrenador\rutinas\ListaRutinas.xaml.cs">
+      <DependentUpon>ListaRutinas.xaml</DependentUpon>
+    </Compile>
+    <Page Include="CambiarPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InicioUsuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="vistaAdmin\GestionarUsuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaAdmin\InicioAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaAdmin\ListaUsuarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaAlumno\CambiarEntrenador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaAlumno\DatosEntrenador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaAlumno\EstadisticasAlumno.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaAlumno\GestionarPerfilAlumno.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaAlumno\gestionRutinas\EjecucionRutinas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaAlumno\gestionRutinas\InicioGestionRutinas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaAlumno\InicioAlumno.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaEntrenador\actividades\GestionActividades.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaEntrenador\actividades\InicioActividades.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaEntrenador\actividades\ListaActividades.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaEntrenador\asignar\AsignarRutinas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaEntrenador\asignar\DetalleRutinas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaEntrenador\asignar\EliminarAsignaciones.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaEntrenador\asignar\InicioAsignarRutinas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaEntrenador\asignar\MostrarAsignaciones.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaEntrenador\GestionarPerfil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaEntrenador\InicioEntrenador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaEntrenador\rutinas\GestionRutinas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaEntrenador\rutinas\InicioRutinas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vistaEntrenador\rutinas\ListaRutinas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagenes\login\fondologin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\login\acceder.png" />
+    <Resource Include="iconos\login\password.png" />
+    <Resource Include="iconos\login\usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\guardar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconoApp.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\visualizar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\noOk.png" />
+    <Resource Include="iconos\general\ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\anyadirLista.png" />
+    <Resource Include="iconos\general\borrarLista.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\aceptar.png" />
+    <Resource Include="iconos\general\cancelar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\cerrarSesion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\coach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\resetPassword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\ejecutar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\ajustes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\gestionar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\actividades.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\listaActividades.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\gestionarActividad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\rutinas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\asignarRutinas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\anyadirAbajo.png" />
+    <Resource Include="iconos\general\anyadirArriba.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\perfil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagenes\heraclesGym.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\flechaDerecha.png" />
+    <Resource Include="iconos\general\flechaIzquierda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\estadisticas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\login\salirSistema.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\borrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagenes\fondoEntrenador.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagenes\fondoAlumno.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\enviarMail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\buscarRegistro.png" />
+    <Resource Include="iconos\general\buscarUsuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\EjecucionRutina.png" />
+    <Resource Include="iconos\general\eliminarRutina.png" />
+    <Resource Include="iconos\general\verRutinas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\anyadirRutina.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\crearUsuario.png" />
+    <Resource Include="iconos\general\listaUsuarios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconos\general\mas.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

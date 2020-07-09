@@ -1,0 +1,62 @@
+﻿<Page x:Class="Proyecto_Final_DAM.vistaEntrenador.actividades.ListaActividades"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Proyecto_Final_DAM.vistaEntrenador.actividades"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"
+      Title="ListaActividades">
+
+    <Grid Background="#DDF1EEEE">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="20,5" Orientation="Horizontal">
+            <TextBlock FontSize="18" Margin="5" VerticalAlignment="Center" FontWeight="Bold">Mostrar</TextBlock>
+            <ComboBox Name="cbFiltro" Margin="5" FontSize="18" HorizontalAlignment="Left" Height="30" Width="250" Background="White" SelectionChanged="cambioSeleccionComboBox">
+            </ComboBox>
+        </StackPanel>
+        <ListView Name="listViewActividades" Grid.Row="1" Margin="20,10,20,30" BorderBrush="Black" BorderThickness="2" Background="#CCFFFFFF" FontSize="16" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                <ListView.View>
+                    <GridView>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style>
+                            <Setter Property="TextElement.FontSize" Value="20" />
+                            <Setter Property="TextElement.FontStyle" Value="Italic" />
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Width="45">
+                        <Image Source="../../iconos/general/ajustes.png" Height="20" Width="20" Stretch="Fill"></Image>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button ToolTip="Detalles de la actividad" Height="30" Width="35" HorizontalAlignment="Right" BorderBrush="Transparent" Background="Transparent" CommandParameter="{Binding}" Click="botonGestion">
+                                        <Image Source="../../iconos/general/gestionarActividad.png"></Image>
+                                    </Button>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Nombre}" Width="Auto">
+                    </GridViewColumn>
+                        <GridViewColumn Header="Tipo actividad" DisplayMemberBinding="{Binding TipoActividad}" Width="Auto"></GridViewColumn>
+                        <GridViewColumn Header="Dificultad" DisplayMemberBinding="{Binding Dificultad}" Width="Auto"></GridViewColumn>
+                        <GridViewColumn Header="Activa" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="estado" Text="{Binding ActivaString}" Foreground="Green" FontWeight="Bold" />
+                                <DataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding Activa}" Value="False">
+                                        <DataTrigger.Setters>
+                                            <Setter Property="TextBlock.Foreground" Value="Red" TargetName="estado"></Setter>
+                                        </DataTrigger.Setters>
+                                    </DataTrigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+    </Grid>
+</Page>

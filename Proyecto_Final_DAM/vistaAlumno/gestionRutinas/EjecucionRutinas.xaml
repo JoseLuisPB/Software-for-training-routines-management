@@ -1,0 +1,88 @@
+﻿<Page x:Class="Proyecto_Final_DAM.vistaAlumno.gestionRutinas.EjecucionRutinas"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Proyecto_Final_DAM.vistaAlumno.gestionRutinas"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"
+      Title="EjecucionRutinas">
+
+    <Grid Background="#DDF1EEEE">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!-- Fila superior-->
+        <StackPanel Margin="10,5" Grid.Row="0" HorizontalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Margin="5" FontSize="18" VerticalAlignment="Center"> Mostrar rutinas para el día</TextBlock>
+            <DatePicker Name="fechaRutina" Margin="5" FontSize="15" VerticalAlignment="Center" Focusable="False" SelectedDateChanged="actualizarDatosCambioFecha"></DatePicker>
+        </StackPanel>
+        
+        <!-- Item control-->
+        <ScrollViewer Grid.Row="1" Margin="10,5" HorizontalAlignment="Center" VerticalAlignment="Top"  VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height ="Auto"></RowDefinition>
+                    <RowDefinition Height ="70"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button ToolTip="Día anterior" Grid.Column="0" Grid.Row="0" Margin="10,5" Height="50" Width="50" Background="Transparent" BorderBrush="Transparent" Click="botonAyer">
+                    <Image Source="../../iconos/general/flechaIzquierda.png" Stretch="Fill"></Image>
+                </Button>
+                <Border Grid.Column="1" Grid.Row="0"  BorderBrush="Black" BorderThickness="3" CornerRadius="20" Background="#DDFCC4C4">
+                    <Border Margin="30" BorderBrush="black" BorderThickness="2">
+                        <ItemsControl Name="rutinasContenidas">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Width="500" Height="250" HorizontalAlignment="Left" Background="White" Orientation="Vertical"></StackPanel>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="350"></ColumnDefinition>
+                                            <ColumnDefinition Width="60"></ColumnDefinition>
+                                            <ColumnDefinition Width="60"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Name="estado" Margin="5" FontSize="16" Foreground="Green" Text="{Binding NombreRutina}"></TextBlock>
+                                        <Button ToolTip="Ejecutado" Grid.Column="1" Margin="5" Width="25" Height="25" Background="Transparent" BorderBrush="Transparent" Click="botonOk" CommandParameter="{Binding}">
+                                            <Image Source="../../iconos/general/ok.png" Stretch="Fill"></Image>
+                                        </Button>
+                                        <Button ToolTip="No ejecutado" Grid.Column="2" Margin="5" Width="25" Height="25" Background="Transparent" BorderBrush="Transparent" Click="botonNoOk" CommandParameter="{Binding}">
+                                            <Image Source="../../iconos/general/noOk.png" Stretch="Fill"></Image>
+                                        </Button>
+                                    </Grid>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding Ejecutada}" Value="False">
+                                            <DataTrigger.Setters>
+                                                <Setter Property="TextBlock.Foreground" Value="Red" TargetName="estado"></Setter>
+                                            </DataTrigger.Setters>
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Border>
+                </Border>
+                <Button ToolTip="Día posterior" Grid.Column="2" Grid.Row="0" Margin="10,5" Height="50" Width="50" Background="Transparent" BorderBrush="Transparent" Click="botonManyana">
+                    <Image Source="../../iconos/general/flechaDerecha.png" Stretch="Fill"></Image>
+                </Button>
+                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button ToolTip="Marcar todos Ok" Margin="10,5" Height="50" Width="50" Background="Transparent" BorderBrush="Transparent" Click="botonTodoOk">
+                        <Image Source="../../iconos/general/ok.png" Stretch="Fill"></Image>
+                    </Button>
+                    <Button ToolTip="Marcar todos NO Ok" Margin="10,5" Height="50" Width="50" Background="Transparent" BorderBrush="Transparent"  Click="botonTodoNoOk">
+                        <Image Source="../../iconos/general/noOk.png" Stretch="Fill"></Image>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -1,0 +1,30 @@
+﻿<Page x:Class="Proyecto_Final_DAM.vistaAdmin.InicioAdmin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Proyecto_Final_DAM.vistaAdmin"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"
+      Title="InicioAdmin">
+        <Grid>
+            <Image Source="../imagenes/fondoAlumno.jpg" Stretch="Fill"></Image>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!-- Panel de botones-->
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Background="#DD8D14F9">
+                    <Button ToolTip="Listar usuarios" Height="55" Width="65" Margin="20,5,5,5" Click="botonGestionar" Background="Transparent" BorderBrush="Transparent">
+                        <Image Grid.Row="0" Source="../iconos/general/listaUsuarios.png" Stretch="Fill"></Image>
+                    </Button>
+                    <Button ToolTip="Crear usuario" Height="55" Width="65" Margin="15,5" Click="botonCrear" Background="Transparent" BorderBrush="Transparent">
+                        <Image Grid.Row="0" Source="../iconos/general/crearUsuario.png" Stretch="Fill"></Image>
+                    </Button>
+                </StackPanel>
+                <!-- Frame-->
+                <Frame Grid.Row="1" Name="framePrincipal" NavigationUIVisibility="Hidden"></Frame>
+            </Grid>
+        </Grid>
+</Page>

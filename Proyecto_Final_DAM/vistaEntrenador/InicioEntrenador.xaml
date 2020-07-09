@@ -1,0 +1,41 @@
+﻿<Page x:Class="Proyecto_Final_DAM.vistaEntrenador.InicioEntrenador"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Proyecto_Final_DAM.vistaEntrenador"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"
+      Title="InicioEntrenador">
+
+    <Grid>
+        <Image Source="../imagenes/fondoAlumno.jpg" Stretch="Fill"></Image>
+        <Grid>
+        <!-- Pantalla -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <!-- Columna 1, botones-->
+            <StackPanel Grid.Column="0" Background="#DD36FAA9">
+                <Button ToolTip="Editar perfil" Margin="5" Height="80" Width="80" FontSize="15" FontWeight="Bold" BorderBrush="Transparent" Background="Transparent" Click="botonPerfil">
+                    <Image Source="../iconos/general/perfil.png" Stretch="Fill"></Image>
+                </Button>
+                <Button ToolTip="Gestionar actividades" Margin="5" Height="80" Width="80" FontSize="15" FontWeight="Bold" BorderBrush="Transparent" Background="Transparent" Click="botonActividades">
+                    <Image Source="../iconos/general/actividades.png" Stretch="Fill"></Image>
+                </Button>
+                <Button ToolTip="Gestionar rutinas" Margin="5" Height="80" Width="80" FontSize="15" FontWeight="Bold" BorderBrush="Transparent" Background="Transparent" Click="botonRutinas">
+                    <Image Source="../iconos/general/rutinas.png" Stretch="Fill"></Image>
+                </Button>
+                <Button ToolTip="Asignar rutinas" Margin="5" Height="80" Width="80" FontSize="15" FontWeight="Bold" BorderBrush="Transparent" Background="Transparent" Click="botonAsignarRutinas">
+                    <Image Source="../iconos/general/asignarRutinas.png" Stretch="Fill"></Image>
+                </Button>
+            </StackPanel>
+            <!-- Columna 2 Frame-->
+                <Frame Name="framePrincipal" Grid.Column="1"  NavigationUIVisibility="Hidden"></Frame>
+            </Grid>
+    </Grid>
+    </Grid>
+</Page>

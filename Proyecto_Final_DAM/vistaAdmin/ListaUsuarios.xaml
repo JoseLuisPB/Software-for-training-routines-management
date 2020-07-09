@@ -1,0 +1,77 @@
+﻿<Page x:Class="Proyecto_Final_DAM.vistaAdmin.ListaUsuarios"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Proyecto_Final_DAM.vistaAdmin"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1024"
+      Title="ListaUsuarios">
+
+    <Grid Background="#DDF1EEEE">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!-- Filtros -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="20,5">
+                <TextBlock FontSize="18" VerticalAlignment="Center" FontWeight="Bold">Filtrar por: </TextBlock>
+                <ComboBox Name="cbFiltro" Margin="0,5,5,5" FontSize="18" HorizontalAlignment="Left" Width="250" Background="White" SelectionChanged="cambioCombobox">
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="20,5">
+                <TextBlock FontSize="18" VerticalAlignment="Center" FontWeight="Bold">Nombre del usuario: </TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="tbFiltro" Margin="0,5,5,5" FontSize="18" Height="30"  Width="300" BorderBrush="Black" BorderThickness="2"></TextBox>
+                    <Button ToolTip="Buscar" Margin="5" Height="30" Width="35" Background="Transparent" BorderBrush="Transparent" Click="botonBuscar">
+                        <Image Source="../iconos/general/buscarUsuario.png"></Image>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <!-- Lista usuarios -->
+        <ListView Name="listaUsuarios" Grid.Row="1" Margin="20,10,20,30" BorderBrush="Black" BorderThickness="2" Background="#CCFFFFFF" FontSize="16" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            <ListView.View>
+                <GridView>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style>
+                            <Setter Property="TextElement.FontSize" Value="20" />
+                            <Setter Property="TextElement.FontStyle" Value="Italic" />
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Width="45">
+                        <Image Source="../iconos/general/ajustes.png" Height="20" Width="20" Stretch="Fill"></Image>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button ToolTip="Ver detalles" Height="30" Width="30" HorizontalAlignment="Right" BorderBrush="Transparent" Background="Transparent" CommandParameter="{Binding}" Click="botonGestion">
+                                    <Image Source="../iconos/general/gestionar.png"></Image>
+                                </Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Nombre completo" DisplayMemberBinding="{Binding NombreCompleto}" Width="Auto"></GridViewColumn>
+                    <GridViewColumn Header="Dni" DisplayMemberBinding="{Binding Dni}" Width="Auto"></GridViewColumn>
+                    <GridViewColumn Header="Activo" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="estado" Text="{Binding ActivoString}" Foreground="Green" FontWeight="Bold" />
+                                <DataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding Activo}" Value="False">
+                                        <DataTrigger.Setters>
+                                            <Setter Property="TextBlock.Foreground" Value="Red" TargetName="estado"></Setter>
+                                        </DataTrigger.Setters>
+                                    </DataTrigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>
