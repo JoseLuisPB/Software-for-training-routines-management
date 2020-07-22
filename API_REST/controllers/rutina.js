@@ -82,34 +82,6 @@ exports.update = function (req, res) {
     res.end();
 }
 
-// Función para activar una rutina
-exports.activarRutina = function (req, res) {
-    var codigo = req.params.codigo;
-    conexion.query("UPDATE rutina set activa = 1 where codigo= ?", [codigo], function (error, rows) {
-        if (error) {
-            console.log(error);
-        }
-        else {
-            console.log("Rutina activada");
-        }
-    });
-    res.end();
-}
-
-// Función para desactivar una rutina
-exports.desactivarRutina = function (req, res) {
-    var codigo = req.params.codigo;
-    conexion.query("UPDATE rutina set activa = 0 where codigo= ?", [codigo], function (error, rows) {
-        if (error) {
-            console.log(error);
-        }
-        else {
-            console.log("Rutina desactivada");
-        }
-    });
-    res.end();
-}
-
 //Función para obtener el código de la última rutina creada
 exports.ultimaRutina = function (req, res) {
     conexion.query("SELECT codigo FROM rutina ORDER BY codigo DESC LIMIT 1", function (error, rows) {

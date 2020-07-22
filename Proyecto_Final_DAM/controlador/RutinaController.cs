@@ -83,41 +83,6 @@ namespace Proyecto_Final_DAM.controlador
                 Mensajes.mensajeError("El registro no se ha actualizado en la base de datos", "Error al actualizar");
             }
         }
-        /*
-        // Función que envía una petición al servidor para modificar el campo activa con el valor si (rutina activa)
-        public static void activarRutina(int codigo)
-        {
-            var rest = new RestClient("http://localhost:3000");
-            var request = new RestRequest("/activarRutina/{codigo}", Method.PUT);
-            request.AddUrlSegment("codigo", codigo);
-            var resultado = rest.Execute(request);
-            if ((int)resultado.StatusCode == 200)
-            {
-                Mensajes.mensajeInformacion("Rutina activada", "Rutina activada");
-            }
-            else
-            {
-                Mensajes.mensajeError("El usuario no ha sido dado de alta", "Error");
-            }
-        }
-
-        // Función que envía una petición al servidor para modificar el campo activa con el valor no (rutina desactiva)
-        public static void desactivarRutina(int codigo)
-        {
-            var rest = new RestClient("http://localhost:3000");
-            var request = new RestRequest("/desactivarRutina/{codigo}", Method.PUT);
-            request.AddUrlSegment("codigo", codigo);
-            var resultado = rest.Execute(request);
-            if ((int)resultado.StatusCode == 200)
-            {
-                Mensajes.mensajeInformacion("Rutina desactivada", "Rutina desactivada");
-            }
-            else
-            {
-                Mensajes.mensajeError("El usuario no ha sido dado de baja", "Error");
-            }
-        }
-        */
         // Función que envía una petición al servidor para obtener el código de la última rutina creada
         public static List<Rutina> ultimaRutina()
         {

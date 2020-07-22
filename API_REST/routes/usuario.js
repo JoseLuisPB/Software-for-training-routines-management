@@ -16,11 +16,8 @@ router.get("/listaInactivos", user.listaInactivos);
 router.get("/busquedaNombre/:nombre", user.busquedaNombre);
 router.post("/usuario", user.add);
 router.put("/usuario", user.update);
-router.put("/altaUsuario/:dni", user.altaUsuario);
-router.put("/bajaUsuario/:dni", user.bajaUsuario);
 router.put("/resetPassword/:dni", user.resetPassword);
 router.put("/actualizarPassword/:contrasenya/:dni", user.actualizarPassword);
-router.get("/usuariosEntrenador/:entrenador", user.usuariosEntrenador);
 
 // Export del objeto router para poder usarlo en otros archivos
 module.exports = router;
