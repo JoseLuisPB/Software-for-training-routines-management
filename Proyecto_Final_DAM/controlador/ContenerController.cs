@@ -63,6 +63,30 @@ namespace Proyecto_Final_DAM.controlador
             var response = rest.Execute(request);
             return JsonConvert.DeserializeObject<List<Contener>>(response.Content);
         }
+        // Función para obtener el número de series ejecutadas en un rango de fechas determinado
+        public static List<Contener> sumaSeries(string dni, int codigoActividad, string fechaInicio, string fechaFin)
+        {
+            var rest = new RestClient("http://localhost:3000");
+            var request = new RestRequest("/sumaSeries/{dni}/{codigoActividad}/{fechaInicio}/{fechaFin}", Method.GET);
+            request.AddUrlSegment("dni", dni);
+            request.AddUrlSegment("codigoActividad", codigoActividad);
+            request.AddUrlSegment("fechaInicio", fechaInicio);
+            request.AddUrlSegment("fechaFin", fechaFin);
+            var response = rest.Execute(request);
+            return JsonConvert.DeserializeObject<List<Contener>>(response.Content);
+        }
+        // Función para obtener el número de repeticiones ejecutadas en un rango de fechas determinado
+        public static List<Contener> sumaRepeticiones(string dni, int codigoActividad, string fechaInicio, string fechaFin)
+        {
+            var rest = new RestClient("http://localhost:3000");
+            var request = new RestRequest("/sumaRepeticiones/{dni}/{codigoActividad}/{fechaInicio}/{fechaFin}", Method.GET);
+            request.AddUrlSegment("dni", dni);
+            request.AddUrlSegment("codigoActividad", codigoActividad);
+            request.AddUrlSegment("fechaInicio", fechaInicio);
+            request.AddUrlSegment("fechaFin", fechaFin);
+            var response = rest.Execute(request);
+            return JsonConvert.DeserializeObject<List<Contener>>(response.Content);
+        }
         // Función para obtener el total de repeticiones ejecutadas en un rango de fechas determinado
         public static List<Contener> totalRepeticiones(string dni, int codigoActividad, string fechaInicio, string fechaFin)
         {

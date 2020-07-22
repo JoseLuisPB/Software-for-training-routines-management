@@ -72,7 +72,7 @@ namespace Proyecto_Final_DAM
             }
         }
         //Función para cerrar la pantalla sin ejecutar cambios
-        private void botonCancelar(object sender, RoutedEventArgs e)
+        private void botonSalir(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

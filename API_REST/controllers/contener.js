@@ -60,6 +60,37 @@ exports.actividadesEjecutadasRango = function (req, res) {
         }
     });
 }
+// Función para obtener la suma de las series ejecutadas en un rango de fechas --> No usadas
+exports.sumaSeries = function (req, res) {
+    var dni = req.params.dni;
+    var codigoActividad = req.params.codigoActividad;
+    var fechaInicio = req.params.fechaInicio;
+    var fechaFin = req.params.fechaFin
+    conexion.query("SELECT SUM(series) AS series FROM realizar, contener WHERE contener.codigo_rutina = realizar.codigo_rutina AND realizar.dni_usuario = ? AND realizar.ejecutada = 1 AND contener.codigo_actividad = ? AND realizar.fecha BETWEEN ? AND ? ", [dni,codigoActividad,fechaInicio,fechaFin], function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        }
+        else {
+            return res.json(rows);
+        }
+    });
+}
+// Función para obtener la suma de las repeticiones ejecutadas en un rango de fechas --> No usadas
+exports.sumaRepeticiones = function (req, res) {
+    var dni = req.params.dni;
+    var codigoActividad = req.params.codigoActividad;
+    var fechaInicio = req.params.fechaInicio;
+    var fechaFin = req.params.fechaFin
+    conexion.query("SELECT SUM(repeticiones) AS repeticiones FROM realizar, contener WHERE contener.codigo_rutina = realizar.codigo_rutina AND realizar.dni_usuario = ? AND realizar.ejecutada = 1 AND contener.codigo_actividad = ? AND realizar.fecha BETWEEN ? AND ? ", [dni, codigoActividad, fechaInicio, fechaFin], function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        }
+        else {
+            return res.json(rows);
+        }
+    });
+}
+
 // Función para obtener la suma del total de repeticiones ejecutadas en un rango de fechas
 exports.totalRepeticiones = function (req, res) {
     var dni = req.params.dni;

@@ -82,6 +82,41 @@ namespace Proyecto_Final_DAM.controlador
                 Mensajes.mensajeError("El registro no se ha actualizado en la base de datos", "Error al actualizar");
             }
         }
+
+        /* Función que envía una petición al servidor para modificar el campo activo con el valor si (usuario dado de alta)
+        public static void altaUsuario(string dni)
+        {
+            var rest = new RestClient("http://localhost:3000");
+            var request = new RestRequest("/altaUsuario/{dni}", Method.PUT);
+            request.AddUrlSegment("dni", dni);
+            var resultado = rest.Execute(request);
+            if ((int)resultado.StatusCode == 200)
+            {
+                Mensajes.mensajeInformacion("Usuario dado de alta", "Alta usuario");
+            }
+            else
+            {
+                Mensajes.mensajeError("El usuario no ha sido dado de alta", "Error");
+            }
+        }*/
+
+        /* Función que envía una petición al servidor para modificar el campo activo con el valor no (usuario dado de baja)
+        public static void bajaUsuario(string dni)
+        {
+            var rest = new RestClient("http://localhost:3000");
+            var request = new RestRequest("/bajaUsuario/{dni}", Method.PUT);
+            request.AddUrlSegment("dni", dni);
+            var resultado = rest.Execute(request);
+            if ((int)resultado.StatusCode == 200)
+            {
+                Mensajes.mensajeInformacion("Usuario dado de baja", "Baja usuario");
+            }
+            else
+            {
+                Mensajes.mensajeError("El usuario no ha sido dado de baja", "Error");
+            }
+        }*/
+
         // Función que envía una petición al servidor para modificar el campo cambiar password (resetear el password)
         public static void resetPassword(string dni)
         {
@@ -116,6 +151,15 @@ namespace Proyecto_Final_DAM.controlador
                 Mensajes.mensajeError("El password no se ha reiniciado", "Error");
             }
         }
+        /*Función que envía una petición al servidor para mostrar los alumnos asignados al entrenador 
+        public static List<Usuario> usuariosEntrenador(string entrenador)
+        {
+            var rest = new RestClient("http://localhost:3000");
+            var request = new RestRequest("/usuariosEntrenador/{entrenador}", Method.GET);
+            request.AddUrlSegment("entrenador", entrenador);
+            var response = rest.Execute(request);
+            return JsonConvert.DeserializeObject<List<Usuario>>(response.Content);
+        }*/
 
         // Filtros
 

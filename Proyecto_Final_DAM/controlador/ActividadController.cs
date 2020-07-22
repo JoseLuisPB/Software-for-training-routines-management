@@ -63,7 +63,41 @@ namespace Proyecto_Final_DAM.controlador
                 Mensajes.mensajeError("El registro no se ha insertado en la base de datos", "Error al actualizar");
             }
         }
+        /*
+        // Función que envía una petición al servidor para modificar el campo obsoleta con el valor no (Actividad activa)
+        public static void altaActividad(int codigo)
+        {
+            var rest = new RestClient("http://localhost:3000");
+            var request = new RestRequest("/altaActividad/{codigo}", Method.PUT);
+            request.AddUrlSegment("codigo", codigo);
+            var resultado = rest.Execute(request);
+            if ((int)resultado.StatusCode == 200)
+            {
+                Mensajes.mensajeInformacion("Actividad dada de alta", "Alta de actividad");
+            }
+            else
+            {
+                Mensajes.mensajeError("La actividad no ha sido dada de alta", "Error");
+            }
+        }
 
+        // Función que envía una petición al servidor para modificar el campo activo obsoleta el valor si (Actividad inactiva)
+        public static void bajaActividad(int codigo)
+        {
+            var rest = new RestClient("http://localhost:3000");
+            var request = new RestRequest("/bajaActividad/{codigo}", Method.PUT);
+            request.AddUrlSegment("codigo", codigo);
+            var resultado = rest.Execute(request);
+            if ((int)resultado.StatusCode == 200)
+            {
+                Mensajes.mensajeInformacion("Actividad dada de baja", "Baja de actividad");
+            }
+            else
+            {
+                Mensajes.mensajeError("La actividad no ha sido dada de baja", "Error");
+            }
+        }
+        */
         // Función que envía una petición al servidor para que devuelva el codigo de la última actividad creada
         public static List<Actividad> ultimaActividadCreada()
         {

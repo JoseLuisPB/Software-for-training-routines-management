@@ -10,5 +10,6 @@ router.get("/listaEntrenadoresActivos", trainer.listaEntrenadoresActivos);
 router.get("/numeroAlumnosAsignados/:dni", trainer.numeroAlumnosAsignados);
 router.post("/entrenador", trainer.add);
 router.put("/entrenador", trainer.update);
+router.put("/borrarBiografia/:dni", trainer.borrarBiografia);
 
 module.exports = router;
