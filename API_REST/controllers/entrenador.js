@@ -65,22 +65,7 @@ exports.update = function (req, res) {
     res.end();
 }
 
-// Función para dar borrar la biografia del entrenador --> No se usa
-exports.borrarBiografia = function (req, res) {
-    var dni = req.params.dni;
-    conexion.query("UPDATE entrenador set biografia = '' where dni_usuario= ?", [dni], function (error, rows) {
-        if (error) {
-            console.log(error);
-        }
-        else {
-            console.log("Biografia del entrenador borrada");
-        }
-    });
-    res.end();
-}
-
 // Función que devuelve el número de alumnos que tiene asignado un entrenador
-
 exports.numeroAlumnosAsignados = function (req, res) {
     var dni = req.params.dni;
     conexion.query("SELECT COUNT(alumno.dni_usuario) AS total FROM usuario, alumno WHERE usuario.dni = dni_usuario AND entrenador_asignado = ? AND usuario.activo = 1", [dni], function (error, rows) {

@@ -56,24 +56,7 @@ namespace Proyecto_Final_DAM.controlador
                 Mensajes.mensajeError("Los datos no se han actualizado en la base de datos", "Error al actualizar");
             }
         }
-        /*
-        // Función que envía una petición al servidor para modificar el campo activo con el valor si (usuario dado de alta)
-        public static void borrarBiografia(string dni)
-        {
-            var rest = new RestClient("http://localhost:3000");
-            var request = new RestRequest("/borrarBiografia/{dni}", Method.PUT);
-            request.AddUrlSegment("dni", dni);
-            var resultado = rest.Execute(request);
-            if ((int)resultado.StatusCode == 200)
-            {
-                Mensajes.mensajeInformacion("Biografía borrada", "Borrar biografía");
-            }
-            else
-            {
-                Mensajes.mensajeError("La biografía no se ha borrado", "Error");
-            }
-        }
-        */
+
         // Función que devuelve el número de alumnos que tiene asignado un entrenador
         public static List<Entrenador> numeroAlumnosAsignados(string dni) {
             var rest = new RestClient("http://localhost:3000");

@@ -56,36 +56,7 @@ exports.update = function (req, res) {
     res.end();
 }
 
-// Función para dar de alta una actividad --> No se usa
-exports.altaActividad = function (req, res) {
-    var codigo = req.params.codigo;
-    conexion.query("UPDATE actividad set activa = 1, where codigo= ?", [codigo], function (error, rows) {
-        if (error) {
-            console.log(error);
-        }
-        else {
-            console.log("Actividad dada de alta");
-        }
-    });
-    res.end();
-}
-
-// Función para dar de baja a un usuario --> No se usa
-exports.bajaActividad = function (req, res) {
-    var codigo = req.params.codigo;
-    conexion.query("UPDATE actividad set activa = 0, where codigo= ?", [codigo], function (error, rows) {
-        if (error) {
-            console.log(error);
-        }
-        else {
-            console.log("Actividad dada de baja");
-        }
-    });
-    res.end();
-}
-
 // Función para obtener el código de la última actividad creada
-
 exports.ultimaActividadCreada = function (req, res) {
     conexion.query("SELECT codigo FROM actividad ORDER BY codigo DESC LIMIT 1", function (error, rows) {
         if (error) {

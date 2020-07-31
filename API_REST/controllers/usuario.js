@@ -68,34 +68,6 @@ exports.update = function (req, res) {
     res.end();
 }
 
-// Función para dar de alta a un usuario
-exports.altaUsuario = function (req, res) {
-    var dni = req.params.dni;
-    conexion.query("UPDATE usuario SET activo = 1, cambiar_password = 1 WHERE dni=? ", [dni], function (error, rows) {
-        if (error) {
-            console.log(error);
-        }
-        else {
-            console.log("Usuario dado de alta");
-        }
-    });
-    res.end();
-}
-
-// Función para dar de baja a un usuario
-exports.bajaUsuario = function (req, res) {
-    var dni = req.params.dni;
-    conexion.query("UPDATE usuario set activo = 0, cambiar_password = 0 where dni= ?", [dni], function (error, rows) {
-        if (error) {
-            console.log(error);
-        }
-        else {
-            console.log("Usuario dado de baja");
-        }
-    });
-    res.end();
-}
-
 // Función para resetear el password
 exports.resetPassword = function (req, res) {
     var dni = req.params.dni;
@@ -125,18 +97,6 @@ exports.actualizarPassword = function (req, res) {
     res.end();
 }
 
-// Función para mostrar los alumnos asignados al entrenador --> No se usa
-exports.usuariosEntrenador = function (req, res) {
-    var entrenador = req.params.entrenador;
-    conexion.query("SELECT * FROM usuario WHERE entrenador_asignado=?", [entrenador], function (error, rows) {
-        if (error) {
-            console.log(error);
-        }
-        else {
-            return res.json(rows)
-        }
-    });
-}
 
 // Filtros
 

@@ -12,8 +12,6 @@ router.get("/rutina/:codigo", routine.get);
 router.get("/busquedaNombreRutina/:nombre/:dni_usuario", routine.busquedaNombreRutina);
 router.post("/rutina", routine.add);
 router.put("/rutina", routine.update);
-router.put("/activarRutina/:codigo", routine.activarRutina);
-router.put("/desactivarRutina/:codigo", routine.desactivarRutina);
 router.get("/ultimaRutina", routine.ultimaRutina);
 
 module.exports = router;
