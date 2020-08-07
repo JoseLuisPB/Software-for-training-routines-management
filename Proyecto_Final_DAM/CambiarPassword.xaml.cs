@@ -29,52 +29,57 @@ namespace Proyecto_Final_DAM
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             dni = identificador;
             tipoOperacion = operacion;
-            
-            // Se accede aquí desde la pantalla de crear o al pulsar el botón de reinicio del password para darle un password inicial al usuario
-            if (tipoOperacion.Equals("crear") || tipoOperacion.Equals("reset")) {
-                titulo.Text = "Introduce una contraseña de inicio";
-                repetirContrasenyaLabel.Visibility = Visibility.Collapsed;
-                repetirContrasenyaLabel.SetValue(Grid.RowProperty, 3);
-                repetirContrasenya.Visibility = Visibility.Collapsed;
-                repetirContrasenya.SetValue(Grid.RowProperty, 3);
-                cancelar.Visibility = Visibility.Collapsed;
-                cancelar.SetValue(Grid.RowProperty, 2);
-                aceptar.SetValue(Grid.RowProperty, 2);
+
+            if (tipoOperacion.Equals("crear") || tipoOperacion.Equals("reset"))
+            {
+                this.ajustesCrearReset();
             }
+        }
+        // Función para ajustar la pantalla cuando se crea o se resetea un password
+        public void ajustesCrearReset()
+        {
+            titulo.Text = "Introduce una contraseña de inicio";
+            repetirContrasenyaLabel.Visibility = Visibility.Collapsed;
+            repetirContrasenyaLabel.SetValue(Grid.RowProperty, 3);
+            repetirContrasenya.Visibility = Visibility.Collapsed;
+            repetirContrasenya.SetValue(Grid.RowProperty, 3);
         }
         // Función que actualiza el password
         private void botonAceptar(object sender, RoutedEventArgs e)
         {
             // Se comprueba que el campo password no esté en blanco
-            if (Validaciones.campoEnBlanco("nueva contraseña", nuevaContrasenya.Password.ToString()) == false) {
+            if (!Validaciones.campoEnBlanco("nueva contraseña", nuevaContrasenya.Password.ToString()))
+            {
                 if (tipoOperacion.Equals("crear") || tipoOperacion.Equals("reset"))
                 {
-                    // Se actualiza el campo password
-                    UsuarioController.actualizarPassword(Sesion.gestionPasswords(nuevaContrasenya.Password.ToString()), dni);
-                    // Se resetea el estado para que el usuario pueda introducir el password que quiera
+                    this.cambiarPassword();
                     UsuarioController.resetPassword(dni);
-                    this.Close();
+
                 }
-                else {
+                else
+                {
                     // Se comprueba que el texto de los dos campos es el mismo
                     if (nuevaContrasenya.Password.ToString().Equals(repetirContrasenya.Password.ToString()))
                     {
-                        // Se actualiza el campo password
-                        UsuarioController.actualizarPassword(Sesion.gestionPasswords(nuevaContrasenya.Password.ToString()), dni);
-                        this.Close();
+                        this.cambiarPassword();
                     }
                     else
                     { // El valor de los dos campos es diferente
                         Mensajes.mensajeInformacion("El texto de los dos campos tiene que ser el mismo", "Valores diferentes");
                     }
                 }
-                
             }
+        }
+        private void cambiarPassword()
+        {
+            UsuarioController.actualizarPassword(Sesion.gestionPasswords(nuevaContrasenya.Password.ToString()), dni);
+            this.Close();
         }
         //Función para cerrar la pantalla sin ejecutar cambios
         private void botonSalir(object sender, RoutedEventArgs e)
         {
             this.Close();
+
         }
     }
 }

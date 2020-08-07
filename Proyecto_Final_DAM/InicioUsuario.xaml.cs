@@ -27,42 +27,43 @@ namespace Proyecto_Final_DAM
         public InicioUsuario(int numRoles)
         {
             InitializeComponent();
+            // Ajustes iniciales de la pantalla
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             nombre.Text = Sesion.Nombre + " " + Sesion.Apellidos;
             this.cargarComboBox();
-            this.mostrarPantalla(numRoles);
+            this.mostrarPantallaInicio(numRoles);
+            this.cambiarContrasenya();  
+        }
 
-            // Comprobamos si el usuario necesita o no necesita cambiar de contraseña
-            if (UsuarioController.obtener(Sesion.Dni)[0].Cambiar_password) {
+        // Función para comprobar si el usuario tiene que cambiar la contraseña
+        public void cambiarContrasenya() {
+            if (UsuarioController.obtener(Sesion.Dni)[0].Cambiar_password)
+            {
                 CambiarPassword pass = new CambiarPassword(Sesion.Dni, "editar");
                 pass.ShowDialog();
             }
         }
-
         //Función para cargar el combobox
         public void cargarComboBox()
         {
-            // Recupero los roles de la BD
+            // Se recuperan los roles de la base de datos
             List<Tener> listaCodigosRol = TenerController.obtener(Sesion.Dni);
-            //Cremo mi lista para mostrar en el combobox
+            // Lista con los items que se mostrarán en el combobox
             var listaRoles = new List<string>();
 
             foreach (Tener item in listaCodigosRol)
             {
-                // Obtener código del rol
-                int codigo = item.Codigo_rol;
-                // Obtener nombre del rol
-                String nombreRol = RolController.obtener(codigo)[0].Nombre;
+                String nombreRol = RolController.obtener(item.Codigo_rol)[0].Nombre;
                 listaRoles.Add(nombreRol);
             }
             roles.ItemsSource = listaRoles;
         }
         //Función para mostrar la pantalla de inicio en el caso de que el usuario sólo tenga 1 rol.
-        public void mostrarPantalla(int numRoles)
+        public void mostrarPantallaInicio(int numRoles)
         {
             if (numRoles == 1)
             {
-                // Recojo el código del rol para saber que pantalla tengo que cargar
+                // La pantalla cargada dependerá el código del rol que tenga el usuario que se conecta
                 int codigoRol = TenerController.obtener(Sesion.Dni)[0].Codigo_rol;
                 if (codigoRol == 0)
                 {
